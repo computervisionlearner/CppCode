@@ -2,34 +2,46 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 10
-//把数组顺时针旋转90°；
+#define N 4
 
-int rotate(int a[N][N])
+int rotate1(int a[N][N])  //顺时针旋转90°
 {
-	int layer;
-	for (layer = 0; layer<N / 2; layer++)
+	printf("\n**********顺时针旋转*************\n");
+	for (int i = 0; i<N / 2; i++)
 	{
-		int last = N - 1 - layer;
-		for (int i = layer; i<last; i++)
+		
+		for (int j = i; j<N - 1 - i; j++)
 		{
-			int offset = i - layer;
-			int top = a[layer][i];
-			a[layer][i] = a[last - offset][layer];
-			a[last - offset][layer] = a[last][last - offset];
-			a[last][last - offset] = a[i][last];
-			a[i][last] = top;
+			int temp = a[i][j];
+			a[i][j] = a[N-1-j][i];
+			a[N - 1 - j][i] = a[N - 1 - i][N - 1 - j];
+			a[N - 1 - i][N - 1 - j] = a[j][N - 1 - i];
+			a[j][N - 1 - i] = temp;
 		}
 	}
 
-	for (int i = 0;i < N;i++)
+
+	return a;
+
+}
+
+int rotate(int a[N][N])//逆时针旋转90°
+{
+	printf("\n*********逆时针旋转************\n");
+	for (int i = 0; i<N / 2; i++)
 	{
-		for (int j = 0;j < N;j++)
+		for (int j = i; j<N-1-i; j++)
 		{
-			printf("%4d", a[i][j]);
+			int temp = a[i][j];
+			a[i][j] = a[j][N - 1 - i];
+			a[j][N - 1 - i] = a[N - 1 - i][N - 1 - j];
+			a[N - 1 - i][N - 1 - j] = a[N - 1 - j][i];
+			a[N - 1 - j][i] = temp;
 		}
-		printf("\n");
 	}
+
+	return a;
+
 }
 
 void main()
@@ -47,9 +59,17 @@ void main()
 		}
 		printf("\n");
 	}
-	printf("\n***********************\n");
-	rotate(a);
+	
 
+	int *mat = rotate(a);
+	for (int i = 0;i < N;i++)
+	{
+		for (int j = 0;j < N;j++)
+		{
+			printf("%4d", *mat++);
+		}
+		printf("\n");
+	}
 	system("pause");
 
 }
