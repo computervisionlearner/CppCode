@@ -3,6 +3,7 @@
 #include <time.h>
 
 #define N 10
+//把数组顺时针旋转90°；
 
 int rotate(int a[N][N])
 {
