@@ -24,7 +24,7 @@ int MaxSubarray(int* a, int size, int& from, int& to)
 	from = to = 0;
 	int s = a[0];
 	int result = s;
-	int newfrom;
+	int newfrom = 0;
 	for (int i = 1;i < size;i++)
 	{
 		if (s > 0)
