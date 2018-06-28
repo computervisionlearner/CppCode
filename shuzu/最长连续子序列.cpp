@@ -7,7 +7,7 @@ int MaxSequence(int* a, int size, int& from, int& to)
 	from = to = 0;
 	int p = 1;//存储当前值为止的最长子序列长度
 	int result = p;//存储所有情况下，最长子序列长度
-	int newfrom = 1;
+	int newfrom = 0;
 	for (int i = 1;i < size;i++)
 	{
 		if (a[i] - a[i - 1] == 1)//满足条件时候
