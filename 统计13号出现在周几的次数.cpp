@@ -27,7 +27,7 @@ int get_days(int y, int m)
 
 int main()
 {
-	//第一个13号是星期六
+	//第一个13号是星期六；注意题目条件，有的需要判断输入是否异常
 	int n, a[7] = { 0 }, week = 6; 
 	cin >> n;
 
